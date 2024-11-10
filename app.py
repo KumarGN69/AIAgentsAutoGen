@@ -42,7 +42,7 @@ assistant = AssistantAgent(
     )
 
 
-user_proxy = RetrieveUserProxyAgent(
+user_proxy = UserProxyAgent(
     name="RAG_user_proxy",
     human_input_mode ="NEVER",
     max_consecutive_auto_reply=2,
@@ -52,7 +52,7 @@ user_proxy = RetrieveUserProxyAgent(
     )
 
 task = """
-        get today's TSLA stock price
+        get today's TSLA stock price from https://www.google.com/finance/?hl=en
        """
 # Start the chat
 user_proxy.initiate_chat(
