@@ -8,18 +8,18 @@ from dotenv import load_dotenv
 load_dotenv()
 
 ##load the environment variables from the .env file
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
-os.environ["OPENAI_API_BASE"] = os.getenv("OPENAI_API_BASE")
-os.environ["OPENAI_MODEL_NAME"] = os.getenv("OPENAI_MODEL_NAME")
+API_KEY = os.getenv("API_KEY")
+URL = os.getenv("BASE_URL")
+MODEL_NAME = os.getenv("MODEL_NAME")
 
 #llm_config = { "config_list": [{ "model": "gpt-4", "api_key": os.environ.get("OPENAI_API_KEY") }] }
 
 ##Define the model configuration details
 config_list= [
     {
-        "model": "llama3.2",
+        "model": MODEL_NAME,
         "api_key":"NULL",
-        "base_url": "http://localhost:11434/v1",
+        "base_url": URL,
     
     }
 ]

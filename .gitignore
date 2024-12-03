@@ -6,7 +6,8 @@ __pycache__/
 my_env/
 .env
 tmp/db/
-
+.venv
+.cache/
 # C extensions
 *.so
 
