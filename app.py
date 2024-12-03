@@ -1,8 +1,10 @@
 import os
 import autogen
-from autogen import AssistantAgent,UserProxyAgent
+from autogen import AssistantAgent,UserProxyAgent, register_function
 from autogen.agentchat.contrib.retrieve_user_proxy_agent import RetrieveUserProxyAgent
 from dotenv import load_dotenv
+from tool import get_news
+from pprint import pprint
 
 ##load the environment functions
 load_dotenv()
@@ -43,7 +45,7 @@ assistant = AssistantAgent(
 
 
 user_proxy = UserProxyAgent(
-    name="RAG_user_proxy",
+    name="Stock_News_user_proxy",
     human_input_mode ="NEVER",
     max_consecutive_auto_reply=2,
     code_execution_config= False,
@@ -52,10 +54,21 @@ user_proxy = UserProxyAgent(
     )
 
 task = """
-        get today's TSLA stock price from https://www.google.com/finance/?hl=en
+        get_news("TSLA",period="5d")
        """
 # Start the chat
-user_proxy.initiate_chat(
+# Register the calculator function to the two agents.
+register_function(
+    get_news,
+    caller=assistant,  # The assistant agent can suggest calls to the calculator.
+    executor=user_proxy,  # The user proxy agent can execute the calculator calls.
+    name="get_news",  # By default, the function name is used as the tool name.
+    description="A news reporter",  # A description of the tool.
+)
+
+chat_results = user_proxy.initiate_chat(
     assistant,
-    message=task,
-) 
+    message=" What is the latest news about TSLA in last 5d?"
+)
+
+pprint(chat_results.chat_history)

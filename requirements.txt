@@ -1,2 +1,4 @@
 autogen~=0.4.1
 markdownify~=0.14.1
+yfinance~=0.2.50
+python-dotenv~=
