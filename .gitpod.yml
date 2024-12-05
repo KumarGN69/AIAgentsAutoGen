@@ -9,7 +9,7 @@ tasks:
 
   
   - name: install and set up the environment  
-    init: pip install pyautogen && pip install pyautogen[retrievechat] && python-dotenv && pip install --upgrade pip && pip install markdownify && pip install imap-tools
+    init: pip install pyautogen && pip install pyautogen[retrievechat] && python-dotenv && python -m pip install --upgrade pip && pip install markdownify && pip install imap-tools
       
 
 
