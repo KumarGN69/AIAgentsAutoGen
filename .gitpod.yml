@@ -5,8 +5,8 @@ tasks:
   - name: Ollama Install and start service
     before: echo "Hi from Terminal 2"
     init: curl -fsSL https://ollama.com/install.sh  | sh
-   # command: ollama serve 
-    command: ollama run llama3.2
+    command: ollama serve && ollama run llama3.2
+
   
   - name: install and set up the environment  
     init: pip install pyautogen && pip install pyautogen[retrievechat] && python-dotenv && pip install --upgrade pip && pip install markdownify && pip install imap-tools
