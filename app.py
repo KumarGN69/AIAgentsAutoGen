@@ -62,7 +62,7 @@ register_function(
 # Start the chat
 chat_results = user_proxy.initiate_chat(
     assistant,
-    message=" What are the important news items impacting the stock price of WMT in last 1m?"
+    message=" What are the important news items impacting the stock price of WMT in last 1mo?"
 )
 
 #print the results
