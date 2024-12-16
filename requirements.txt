@@ -3,3 +3,4 @@ markdownify~=0.14.1
 yfinance~=0.2.50
 python-dotenv~=1.0.1
 imap-tools~=1.7.4
+ollama~=0.4.4
